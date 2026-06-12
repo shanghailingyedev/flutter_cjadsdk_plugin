@@ -1,0 +1,61 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.flutter_cjadsdk_plugin_example"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.flutter_cjadsdk_plugin_example"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+
+    dependencies {
+
+        implementation 'cj.mobile:hl:3.481.10.447'
+        implementation 'cj.mobile:jy:2.1.64'
+        implementation 'cj.mobile:lyAd-fwly:3.5.7'
+        implementation 'cj.mobile:lywm-m:7.9.19.25'
+        implementation 'cj.mobile:mp-d:2.9.62'
+        implementation 'cj.mobile:hx:3.1.27'
+        implementation 'cj.mobile:lyjt:4.2.3.2'
+        implementation 'cj.mobile:hxubix:2.10.1.11'
+        implementation 'cj.mobile:hxjt:1.9.1'
+        implementation 'cj.mobile:hxrichmob:1.9.0'
+        implementation 'cj.mobile:hxrichmobrmb:3.4.0'
+        implementation 'cj.mobile:lyicon:2.5.4'
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
