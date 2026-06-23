@@ -2,8 +2,6 @@
 import 'package:flutter_cjadsdk_plugin/common/common_header.dart';
 import 'package:flutter_cjadsdk_plugin/flutter_cjadsdk_plugin.dart';
 
-import '../common/common_header.dart';
-import '../flutter_cjadsdk_plugin.dart';
 import '../inits/lingye_setup_ad_config.dart';
 
 class LingyeSeviceIconAd {

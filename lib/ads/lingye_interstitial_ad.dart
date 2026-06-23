@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter_cjadsdk_plugin/common/common_header.dart';
 import 'package:flutter_cjadsdk_plugin/flutter_cjadsdk_plugin.dart';
 
-import '../common/common_header.dart';
 
 class LingyeInterstitialAd {
 

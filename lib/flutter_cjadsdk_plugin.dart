@@ -1,8 +1,6 @@
 
 import 'package:flutter/services.dart';
 
-import 'flutter_cjadsdk_plugin_platform_interface.dart';
-
 class FlutterCjadsdkPlugin {
 
   static const MethodChannel _channel = MethodChannel('flutter_cjadsdk_plugin');

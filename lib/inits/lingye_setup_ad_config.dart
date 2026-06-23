@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class LingyeSetupAdConfig {
 
   // 媒体appId（双端）
