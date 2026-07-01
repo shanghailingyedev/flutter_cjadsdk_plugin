@@ -1,6 +1,6 @@
 name: flutter_cjadsdk_plugin
 description: "CJAd-上海领页广告支持"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/shanghailingyedev/flutter_cjadsdk_plugin.git
 repository: https://github.com/username/my_flutter_project.git
 publish_t: none
