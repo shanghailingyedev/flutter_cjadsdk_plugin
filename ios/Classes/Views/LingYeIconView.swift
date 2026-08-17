@@ -27,7 +27,9 @@ class LingYeNativeViewFactory: NSObject,FlutterPlatformViewFactory {
     }
     
     func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> any FlutterPlatformView {
-        LingYeTools.shared.iconView = LingYeIconView();
+        if LingYeTools.shared.iconView == nil {
+            LingYeTools.shared.iconView = LingYeIconView();
+        }
         return LingYeTools.shared.iconView!;
     }
     
