@@ -54,12 +54,12 @@ android {
 
         implementation 'cj.mobile:hl:3.481.10.447'
         implementation 'cj.mobile:jy:2.1.64'
-        implementation 'cj.mobile:lyAd-fwly:3.6.0'
+        implementation 'cj.mobile:lyAd-fwly:3.6.2'
         implementation 'cj.mobile:lywm-m:7.9.19.25'
-        implementation 'cj.mobile:mp-d:2.9.72'
+        implementation 'cj.mobile:mp-d:2.9.76'
         implementation 'cj.mobile:lyjt:4.2.3.2'
-        implementation 'cj.mobile:lyblk:2.2.6'
-        implementation 'cj.mobile:lyzf:2.6.0'
+        implementation 'cj.mobile:lyblk:2.2.7'
+        implementation 'cj.mobile:lyzf:2.6.3'
         implementation 'cj.mobile:lyicon:2.5.4'
 
         implementation 'com.squareup.okhttp3:okhttp:3.12.0'
