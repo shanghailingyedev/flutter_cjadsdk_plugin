@@ -51,5 +51,9 @@ class LingYeBaseRegister private constructor() : MethodCallHandler {
         }
     }
 
-
+    // 释放channel
+    fun release() {
+        channel?.setMethodCallHandler(null)
+        channel = null 
+    }
 }

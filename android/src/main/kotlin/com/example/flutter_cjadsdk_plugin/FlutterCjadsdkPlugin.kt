@@ -2,6 +2,7 @@ package com.example.flutter_cjadsdk_plugin
 
 import LingYeBaseRegister
 import LingYeTools
+import android.util.Log
 import androidx.annotation.NonNull
 import com.example.flutter_cjadsdk_plugin.common.LingYeNativeRegister
 
@@ -37,7 +38,7 @@ class FlutterCjadsdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-//    channel.setMethodCallHandler(null)
+    LingYeBaseRegister.getInstance().release()
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
