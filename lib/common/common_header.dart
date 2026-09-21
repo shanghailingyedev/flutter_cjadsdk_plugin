@@ -75,15 +75,18 @@ class LingyeAdCallBackEventName {
 }
 
 typedef LingyeAdCallBackFun = void Function(int code, String message);
+// 原生广告view刷新高度使用（native和icon）
+typedef LingyeAdNativeViewHeightCallBackFun = void Function(int height);
 
 class CommonAdCallBack {
   LingyeAdCallBackFun? onAdLoadSuccess;
   LingyeAdCallBackFun? onAdLoadFailure;
   LingyeAdCallBackFun? onAdShow;
+  LingyeAdNativeViewHeightCallBackFun? onAdViewHeightChange;
   LingyeAdCallBackFun? onAdClick;
   LingyeAdCallBackFun? onAdClose;
   LingyeAdCallBackFun? onAdReward;
-  CommonAdCallBack({this.onAdLoadSuccess, this.onAdLoadFailure, this.onAdShow, this.onAdClick, this.onAdClose, this.onAdReward});
+  CommonAdCallBack({this.onAdLoadSuccess, this.onAdLoadFailure, this.onAdShow, this.onAdViewHeightChange, this.onAdClick, this.onAdClose, this.onAdReward});
 }
 
 class CommonInitCallBack {

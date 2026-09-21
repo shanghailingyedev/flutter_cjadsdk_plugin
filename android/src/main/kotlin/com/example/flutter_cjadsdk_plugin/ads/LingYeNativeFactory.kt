@@ -2,6 +2,7 @@ package com.example.flutter_cjadsdk_plugin.ads
 
 import android.content.Context
 import android.util.Log
+import com.example.flutter_cjadsdk_plugin.Views.LingYeIconView
 import com.example.flutter_cjadsdk_plugin.Views.LingYeNativeView
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.StandardMessageCodec
@@ -14,8 +15,10 @@ class LingYeNativeFactory {
         PlatformViewFactory(StandardMessageCodec.INSTANCE) {
         private val mBinaryMessenger: BinaryMessenger = binaryMessenger
         override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
-            Log.e("cj-log",  "LingYeNativeFactory---原生信息流"+ args.toString());
-            return LingYeNativeView(context, viewId, mBinaryMessenger, args)
+            Log.e("cj-log",  "LingYeIconFactory---Icon"+ args.toString());
+            val nativeView = LingYeIconView(context, 1, mBinaryMessenger, args)
+            LingYeTools.setNativeContentView(nativeView);
+            return nativeView
         }
     }
 }

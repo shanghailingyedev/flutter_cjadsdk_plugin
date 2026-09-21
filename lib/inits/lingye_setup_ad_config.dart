@@ -86,3 +86,18 @@ class LingYeIconConfigParams {
       };
   }
 }
+
+class LingYeNativeParams {
+
+    String? adId; // 广告位ID
+
+    // size 默认屏幕宽度（）
+    int width = 0; 
+
+    Map<String, dynamic> toMap() {
+      return {
+        "adId": adId,
+        "width": width
+      };
+  }
+}

@@ -32,6 +32,9 @@ class LingYeBaseRegister private constructor() : MethodCallHandler {
             LingYeAdSdkMethodNames.loadAndShowRewardVideoAd -> {
                 LingYeRewardHandler.getInstance().handleMethodCall(call, result)
             }
+            LingYeAdSdkMethodNames.loadNativeAd -> {
+                LingYeNativeHandler.getInstance().handleMethodCall(call, result)
+            }
             LingYeAdSdkMethodNames.loadIconAd -> {
                 LingYeIconHandler.getInstance().handleMethodCall(call, result)
             }

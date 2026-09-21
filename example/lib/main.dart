@@ -29,7 +29,8 @@ final List<Map<String, String>> _menus = [
     {'text': '激励视频'},
     {'text': '信息流', 'route': 'nativeAdPage'},
     {'text': 'ICON'},
-    {'text': 'ICON View'}
+    {'text': 'ICON View'},
+    {'text': 'Native View'},
   ];
 
 class _MyAppState extends State<MyApp> {
@@ -145,6 +146,29 @@ class _MyAppState extends State<MyApp> {
     LingyeRewardvideoAd(adId: rewardVideoId, eventCallBack:adCallBack).loadAndShow();
   }
 
+  _loadAndShowNativeAd(){
+        final adCallBack = CommonAdCallBack(
+      onAdLoadSuccess: (code, message) {
+        debugPrint("cj-log-信息流加载成功");
+      },
+      onAdLoadFailure: (code, message) {
+        debugPrint("cj-log-信息流加载失败$message");
+      },
+      onAdShow: (code, message) {
+        debugPrint("cj-log-信息流展示成功");
+      },
+      onAdClick: (code, message) {
+        debugPrint("cj-log-信息流触发点击");
+      },
+      onAdClose: (code, message) {
+        debugPrint("cj-log-信息流触发关闭");
+      });
+      final config = LingYeNativeParams();
+      config.adId = nativeId; 
+      config.width = 300;
+      LingyeNativeAd(params: config, eventCallBack: adCallBack).loadAndShow();
+  }
+
   _loadAndShowIconView() {
       final adCallBack = CommonAdCallBack(
       onAdLoadSuccess: (code, message) {
@@ -218,6 +242,9 @@ class _MyAppState extends State<MyApp> {
       }
         break;
       case 4:
+      {
+        _loadAndShowNativeAd();
+      }
         break;
       case 5: 
       {
@@ -230,17 +257,32 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget getIconView(){
-  var view = Container(
-      height: 60,
-      width: 60,
-      color: Colors.red,
-      child: Platform.isIOS ? const UiKitView(viewType: 'flutter_cjadsdk_plugin/icon_contentView') : const AndroidView(viewType: 'flutter_cjadsdk_plugin/icon_contentView')
-    );   
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center, // 水平居中
-      children: <Widget>[
-        view
-      ]);
+    var view = Container(
+        height: 60,
+        width: 60,
+        color: Colors.red,
+        child: Platform.isIOS ? const UiKitView(viewType: 'flutter_cjadsdk_plugin/icon_contentView') : const AndroidView(viewType: 'flutter_cjadsdk_plugin/icon_contentView')
+      );   
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center, // 水平居中
+        children: <Widget>[
+          view
+        ]);
+  }
+
+  Widget getNativeView(){
+    return LingYeNativeWidget(nativeId, 450);
+      // var view = Container(
+      //     width: 320, 
+      //     height: 240,
+      //     // color: Colors.green,
+      //     child: Platform.isIOS ? const UiKitView(viewType: 'flutter_cjadsdk_plugin/native_contentView') : const AndroidView(viewType: 'flutter_cjadsdk_plugin/native_contentView')
+      //     );   
+      // return Row(
+      //   mainAxisAlignment: MainAxisAlignment.center, // 水平居中
+      //   children: <Widget>[
+      //     view
+      //   ]);
   }
 
   @override
@@ -257,7 +299,10 @@ class _MyAppState extends State<MyApp> {
              separatorBuilder: (_, __) => const SizedBox(height: 32),
              itemBuilder: (context, index) {
               if (index == 6) {
-                return  getIconView();
+                return getIconView();
+              }
+              if (index == 7) {
+                return getNativeView();
               }
               return MaterialButton (
                  color: Colors.black,

@@ -40,6 +40,7 @@ class LingYeNativeHandler {
         nativeAd = CJNativeExpress()
         val activity = LingYeTools.getActivity()
         val adId = params?.get("adId") as? String
+        val width = params?.get("width") as? Int
         val map: MutableMap<String, Any> = HashMap()
 
         var content = activity?.findViewById<ViewGroup>(android.R.id.content)
@@ -53,7 +54,7 @@ class LingYeNativeHandler {
             return
         }
 
-        nativeAd?.loadAd(activity, 300, 1, adId, object : CJNativeExpressListener {
+        nativeAd?.loadAd(activity, width!!, 0, adId, object : CJNativeExpressListener {
             override fun onShow(p0: View?) {
                 map["height"] = (p0 as View).height
                 map.put("code", 0)
@@ -85,6 +86,8 @@ class LingYeNativeHandler {
             override fun onClose(p0: View?) {
                 map.put("code", 0)
                 map.put("message", "信息流触发关闭")
+                LingYeTools.getNativeContentView()?.view?.removeAllViews()
+                LingYeTools.getNativeContentView()?.view?.visibility = View.GONE
                 LingYeBaseRegister.getInstance().sendMessageToFlutter(
                     LingYeAdSdkCallBackMethodNames.nativeAdOnClose,
                     map
@@ -94,9 +97,8 @@ class LingYeNativeHandler {
             override fun loadSuccess(p0: View?) {
                 map.put("code", 0)
                 map.put("message", "信息流加载成功")
-                if (p0 != null) {
-                    LingYeLocalData.getInstance().addNativeAdForId(params?.get("nativeId").toString(), p0)
-                }
+                LingYeTools.getNativeContentView()?.view?.visibility = View.VISIBLE
+                LingYeTools.getNativeContentView()?.view?.addView(p0)
                 LingYeBaseRegister.getInstance().sendMessageToFlutter(
                     LingYeAdSdkCallBackMethodNames.nativeAdLoadSuccess,
                     map
