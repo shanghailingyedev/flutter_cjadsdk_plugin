@@ -53,7 +53,8 @@ class _MyAppState extends State<MyApp> {
     final config = LingyeSetupAdConfig(appId);
     config.oaid = "sdghkjashdkajshdkas";
     config.isCanUseAppList = 0;
-    config.privacyCompliance = 0;
+    config.personalized = 0;
+    config.isShaking = 0;
 
     final initCallBack = CommonInitCallBack(
       success: (code, message) {

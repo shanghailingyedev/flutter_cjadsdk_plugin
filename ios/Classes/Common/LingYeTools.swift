@@ -11,6 +11,8 @@ class LingYeTools: NSObject {
     
     var iconView: LingYeIconView?
     
+    var nativeView: LingYeIconView?
+    
     static let shared: LingYeTools = LingYeTools()
     
     func lyLog(msg: String) {

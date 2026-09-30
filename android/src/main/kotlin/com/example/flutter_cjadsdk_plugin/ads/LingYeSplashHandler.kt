@@ -56,6 +56,15 @@ class LingYeSplashHandler {
         handle.setupBottom(model)
 
         splashAd?.loadAd(activity, adId.toString(), handle.getWidth(), handle.getHeight(), object : CJSplashListener {
+            override fun onShowError(p0: String?) {
+                map.put("code", 0)
+                map.put("message", "触发展示失败")
+                (activity.window?.decorView as ViewGroup?)!!.removeView(handle.content)
+                LingYeBaseRegister.getInstance().sendMessageToFlutter(
+                    LingYeAdSdkCallBackMethodNames.splashAdOnClose,
+                    map
+                )
+            }
             override fun onShow() {
                 map.put("code", 0)
                 map.put("message", "展示成功")

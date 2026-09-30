@@ -3,6 +3,7 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://gitee.com/lysdk/maven/raw/master/maven/" }
+        maven { url "https://artifact.bytedance.com/repository/pangle/"}
     }
 }
 

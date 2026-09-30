@@ -10,8 +10,10 @@ class LingyeSetupAdConfig {
   String? oaid;
   // 是否允许获取应用列表（默认true）
   int? isCanUseAppList;
-  // 是否需要隐私合规（默认false）
-  int? privacyCompliance;
+  // 是否关闭个性化推荐（默认0 0否 1是）
+  int? personalized = 0;
+  // 是否打开摇一摇（默认0 0打开 1关闭） 
+  int? isShaking = 0;
   // 传给原生map
   Map<String, dynamic> toMap() {
     return {
@@ -19,7 +21,8 @@ class LingyeSetupAdConfig {
       "userId": userId,
       "oaid": oaid,
       "isCanUseAppList": isCanUseAppList,
-      "privacyCompliance": privacyCompliance,
+      "personalized": personalized,
+      "isShaking": isShaking
     };
   }
   LingyeSetupAdConfig(this.appId);

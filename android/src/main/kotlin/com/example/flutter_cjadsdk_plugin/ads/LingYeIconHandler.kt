@@ -7,7 +7,6 @@ import cj.mobile.listener.CJIconListener
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-
 class LingYeIconHandler {
 
     var iconAd: CJIcon? = null

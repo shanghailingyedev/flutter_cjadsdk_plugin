@@ -13,6 +13,7 @@ class LingYeTools {
     companion object {
         var activityWeakRef: WeakReference<Activity>? = null
         var iconContentView: WeakReference<LingYeIconView>? = null
+        var nativeContentView: WeakReference<LingYeIconView>? = null
 
         fun setActivityWeakRef(activity: Activity?){
             activityWeakRef = activity?.let { WeakReference(it) }
@@ -22,12 +23,20 @@ class LingYeTools {
             iconContentView = content?.let { WeakReference(it) }
         }
 
+        fun setNativeContentView(content: LingYeIconView?){
+            nativeContentView = content?.let { WeakReference(it) }
+        }
+
         fun getActivity(): Activity? {
             return  activityWeakRef?.get()
         }
 
         fun getIconContentView(): LingYeIconView? {
             return iconContentView?.get()
+        }
+
+        fun getNativeContentView(): LingYeIconView? {
+            return nativeContentView?.get()
         }
 
         fun getScreenSize(): Point {

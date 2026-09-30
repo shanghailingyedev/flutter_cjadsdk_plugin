@@ -34,6 +34,10 @@ class LingYeSetupHandler {
 
     fun initSDK() {
         val application: Context? = LingYeTools.getApplicationContext()
+        val personalized = params?.get("personalized")
+        val isShaking = params?.get("isShaking")
+        CJMobileAd.offPersonal(personalized == 1)
+        CJMobileAd.setIsOpenShake(isShaking == 1)
         CJMobileAd.privacyCompliance(application as Application?, true)
         //防止上架后台读取应用后台（vivo）
         CJMobileAd.isCanUseAppList(false)

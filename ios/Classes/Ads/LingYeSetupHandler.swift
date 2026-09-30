@@ -23,6 +23,12 @@ class LingYeSetupHandler: NSObject {
             LingYeTools.shared.lyLog(msg: "appId不能为空")
             return
         }
+        
+        let personalized = initParams["personalized"] as? Int ?? 0
+        let isShaking = initParams["isShaking"] as? Int ?? 1
+        CJADManager.setEnableShake(isShaking == 1)
+        CJADManager.setEnablePersonalRecommend(personalized == 0)
+        
         CJADManager.openDebugLog()
         CJADManager.configure(appId) { success, error in
             LingYeTools.shared.lyLog(msg: "SDK初始化状态回传")
