@@ -1,6 +1,8 @@
 import android.graphics.Color
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,6 +16,9 @@ class BottomViewHandle {
     var imageView: ImageView? = null
     var textLabel: TextView? = null
 
+    private var contentW = 0
+    private var contentH = 0
+
     fun setupBottom(model: LingYeBottomModel) {
         val activity = LingYeTools.getActivity()
         if (activity != null) {
@@ -23,6 +28,7 @@ class BottomViewHandle {
             splashContent?.setBackgroundColor(Color.WHITE)
             bottomView = FrameLayout(activity)
             if (model.bottomViewBGColor.isNotEmpty()) {
+                model.bottomViewBGColor.toColorInt()
                 bottomView?.setBackgroundColor(model.bottomViewBGColor.toColorInt())
             }
 
@@ -30,6 +36,8 @@ class BottomViewHandle {
             val height = point.y
             val width = point.x
 
+            Log.e("ly_ad_width", width.toString())
+            Log.e("ly_ad_height", height.toString())
 
             val contentParams = FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -39,6 +47,8 @@ class BottomViewHandle {
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 height-model.bottomHeight.toInt()
             )
+            contentW = width
+            contentH = height-model.bottomHeight.toInt()
 
             val bottomLayoutParams = FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -79,7 +89,6 @@ class BottomViewHandle {
                 FrameLayout.LayoutParams.WRAP_CONTENT,
             )
             textLayoutParams.topMargin = (model.textMarginTop + model.logoImageMarginTop + model.logoImageHeight).toInt()
-
             imageView?.layoutParams = imageViewLayoutParams
             textLabel?.layoutParams = textLayoutParams
             bottomView?.addView(textLabel)
@@ -92,16 +101,10 @@ class BottomViewHandle {
 
 
     fun getWidth(): Int {
-        content?.width?.let {
-            return it
-        }
-        return 0
+        return contentW
     }
 
     fun getHeight(): Int {
-        content?.height?.let {
-            return it
-        }
-        return 0
+        return contentH
     }
 }

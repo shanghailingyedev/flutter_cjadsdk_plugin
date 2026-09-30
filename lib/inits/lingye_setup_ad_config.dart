@@ -12,8 +12,8 @@ class LingyeSetupAdConfig {
   int? isCanUseAppList;
   // 是否关闭个性化推荐（默认0 0否 1是）
   int? personalized = 0;
-  // 是否打开摇一摇（默认0 0打开 1关闭） 
-  int? isShaking = 0;
+  // 是否打开摇一摇（默认0 0关闭 1打开） 
+  int? isShaking = 1;
   // 传给原生map
   Map<String, dynamic> toMap() {
     return {

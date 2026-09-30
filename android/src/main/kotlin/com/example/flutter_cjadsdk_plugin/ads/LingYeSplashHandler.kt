@@ -54,7 +54,6 @@ class LingYeSplashHandler {
         val model = LingYeBottomModel()
         params?.let { model.setupAdConfig(it) }
         handle.setupBottom(model)
-
         splashAd?.loadAd(activity, adId.toString(), handle.getWidth(), handle.getHeight(), object : CJSplashListener {
             override fun onShowError(p0: String?) {
                 map.put("code", 0)
