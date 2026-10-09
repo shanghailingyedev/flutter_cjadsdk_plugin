@@ -19,7 +19,7 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://gitee.com/lysdk/maven/raw/master/maven/" }
-        maven { url "https://artifact.bytedance.com/repository/pangle/" }
+        // maven { url "https://artifact.bytedance.com/repository/pangle/" }
         
     }
 }
@@ -54,18 +54,27 @@ android {
 
     dependencies {
 
-        implementation 'cj.mobile:lywm:7.9.19.36'
-        implementation 'cj.mobile:anythink:6.6.22'
-        implementation 'cj.mobile:lyblk:2.2.8'
+// wm（mini）、fw（定制）、zf、blk、qm、彗星icon、芒果
+        // 自有预算
+        implementation 'cj.mobile:lywm-m:7.9.19.28' 
+        implementation 'cj.mobile:mp-d:3.0.20'
         implementation 'cj.mobile:lyzf:2.7.6'
+        implementation 'cj.mobile:lyblk:2.2.8'
         implementation 'cj.mobile:lyicon:2.5.4'
-        implementation 'cj.mobile:lyAd:3.6.5'
-        implementation 'cj.mobile:mp:3.0.20'
+        implementation 'cj.mobile:lmg:1.0.6'
 
-        implementation "com.pangle.cn:mediation-sdk:7.8.1.4"
-        implementation 'cj.mobile:ks:5.6.10.1'
-        implementation 'cj.mobile:bd:9.460'
-        implementation 'cj.mobile:gdt:4.701.1571'
+        // 主包
+        implementation 'cj.mobile:lyAd-fwly:3.6.5'
+
+        // other
+        // implementation 'cj.mobile:anythink:6.6.22'
+        implementation 'cj.mobile:hl:3.482.17.448'
+
+        // // 联盟SDK        
+        // implementation "com.pangle.cn:mediation-sdk:7.8.1.4"
+        // implementation 'cj.mobile:ks:5.6.10.1'
+        // implementation 'cj.mobile:bd:9.460'
+        // implementation 'cj.mobile:gdt:4.701.1571'
 
 
         implementation 'com.squareup.okhttp3:okhttp:3.12.0'
