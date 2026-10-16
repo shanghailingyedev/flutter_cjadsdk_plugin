@@ -30,7 +30,7 @@ class LingYeSetupHandler: NSObject {
         CJADManager.setEnablePersonalRecommend(personalized == 0)
         
         CJADManager.openDebugLog()
-        CJADManager.configure(appId) { success, error in
+        CJADManager.configure("96ff49947661db62") { success, error in
             LingYeTools.shared.lyLog(msg: "SDK初始化状态回传")
             LingYeBaseRegister.shared.sendToFlutter(method: self.setupCallback(success: success), arguments: self.setupCallbackArguments(success: success, error: error as? NSError))
         };
