@@ -16,7 +16,7 @@ A new Flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.static_framework = true
-  s.dependency 'CJMobileAdapter', '2.5.33'
+  s.dependency 'CJMobileAdapter', '2.5.35'
   s.platform = :ios, '12.0'
 
   # Flutter.framework does not contain a i386 slice.

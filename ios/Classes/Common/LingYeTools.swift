@@ -4,7 +4,6 @@
 //
 //  Created by 熊俊 on 2026/3/31.
 //
-
 import UIKit
 
 class LingYeTools: NSObject {
@@ -37,19 +36,30 @@ class LingYeTools: NSObject {
         return topController
     }
     
-    
     /// 获取当前window
     /// - Returns: 当前window
     func lyGetCurrentWindow() -> UIWindow? {
-        if #available(iOS 13.0, *) {
-            let window = UIApplication.shared.windows.first
-            window?.makeKeyAndVisible()
-            return window
+        // iOS 15.0 及以上：UIWindowScene 直接提供了 keyWindow 属性
+        if #available(iOS 15.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first(where: { $0.activationState == .foregroundActive })?
+                .keyWindow
+        } 
+        // iOS 13.0 - 14.x：需要遍历 windows 数组查找 isKeyWindow
+        else if #available(iOS 13.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first(where: { $0.activationState == .foregroundActive })?
+                .windows
+                .first(where: { $0.isKeyWindow })
+        } 
+        // iOS 12 及以下：使用已废弃但有效的 keyWindow 属性
+        else {
+            return UIApplication.shared.keyWindow
         }
-        return UIApplication.shared.keyWindow
     }
-    
-    
+
     func lyHexString(hexString: String) -> UIColor? {
         var hexSanitized = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
